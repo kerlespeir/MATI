@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MATI · 高维心智映射</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=JetBrains+Mono:wght@400;700&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="grid-background"></div>
+    <div class="glow-orb orb-a"></div>
+    <div class="glow-orb orb-b"></div>
+
+    <main class="page">
+      <section id="setupSection" class="panel hero glass">
+        <div class="hero-copy">
+          <p class="eyebrow">MATH-BTI / High-Dimensional Mind Mapping</p>
+          <h1>寻找你的<br>数学原型。</h1>
+          <p class="hero-text">
+            这不是常规的心理测试。我们通过 28 种学术与生活情境，将你的潜意识投影到 <span>代数(A)-几何(G)</span>、<span>动力(D)-静态(S)</span>、<span>连续(C)-离散(F)</span>、<span>直觉(I)-严密(R)</span> 四组正交基上。
+          </p>
+          <div class="hero-tags">
+            <span>连续光谱评分</span>
+            <span>16 种高阶流形</span>
+            <span>纯前端拓扑展开</span>
+          </div>
+          <button id="startBtn" class="primary-btn mt-6">初始化坐标系</button>
+        </div>
+      </section>
+
+      <section id="quizSection" class="hidden">
+        <div class="progress-container">
+          <div class="progress-bar"><div id="progressFill"></div></div>
+          <p id="progressText" class="mono-text"></p>
+        </div>
+
+        <div class="quiz-grid">
+          <section class="panel glass question-panel">
+            <h3 id="questionTitle"></h3>
+            <div id="optionsList" class="options-list"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="resultsSection" class="hidden">
+        <div class="panel glass results-header">
+          <p class="eyebrow">ANALYSIS COMPLETE</p>
+          <h2>你的数学人格原型已生成</h2>
+          <h1 id="archetypeTitle" class="archetype-title">--</h1>
+          <p id="archetypeDesc" class="archetype-desc">--</p>
+        </div>
+
+        <section class="panel glass constellation-panel">
+          <p class="eyebrow">TOPOLOGICAL PROJECTION</p>
+          <canvas id="constellationCanvas" width="800" height="400"></canvas>
+        </section>
+
+        <button id="restartBtn" class="ghost-btn mt-6">重新映射</button>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

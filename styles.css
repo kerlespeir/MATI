@@ -1,0 +1,180 @@
+:root {
+  --bg-deep: #050508;
+  --bg-grid: rgba(255, 255, 255, 0.03);
+  --panel-bg: rgba(15, 16, 24, 0.6);
+  --line: rgba(255, 255, 255, 0.1);
+  --ink: #e2e8f0;
+  --muted: #8b949e;
+  --accent-cyan: #00f0ff;
+  --accent-purple: #8b5cf6;
+  --radius: 16px;
+  
+  font-family: "Noto Serif SC", "Cormorant Garamond", serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg-deep);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* 坐标系网格背景 */
+.grid-background {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, var(--bg-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--bg-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -2;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+/* 高维发光球体 */
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  opacity: 0.4;
+  animation: float 20s infinite alternate ease-in-out;
+}
+.orb-a {
+  width: 400px; height: 400px;
+  background: var(--accent-cyan);
+  top: -100px; left: -100px;
+}
+.orb-b {
+  width: 500px; height: 500px;
+  background: var(--accent-purple);
+  bottom: -200px; right: -100px;
+  animation-delay: -5s;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.hidden { display: none !important; }
+.mt-6 { margin-top: 32px; }
+
+/* 玻璃态面板 */
+.glass {
+  background: var(--panel-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 24px 40px rgba(0,0,0,0.4);
+}
+
+.panel { padding: 40px; }
+
+.eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent-cyan);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+h1, h2, h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+
+h1 { font-size: 3.5rem; }
+.hero-text { color: var(--muted); line-height: 1.8; font-size: 1.1rem; }
+.hero-text span { color: var(--ink); border-bottom: 1px solid var(--accent-purple); }
+
+.mono-text { font-family: "JetBrains Mono", monospace; font-size: 14px; }
+
+/* 标签 */
+.hero-tags { display: flex; gap: 12px; margin-top: 24px; }
+.hero-tags span {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.03);
+}
+
+/* 按钮 */
+button {
+  font-family: "JetBrains Mono", monospace;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s;
+  padding: 14px 32px;
+  font-size: 14px;
+}
+.primary-btn {
+  background: transparent;
+  color: var(--accent-cyan);
+  border: 1px solid var(--accent-cyan);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.primary-btn:hover {
+  background: var(--accent-cyan);
+  color: #000;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+}
+.ghost-btn {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+.ghost-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+/* 进度条 */
+.progress-container { margin-bottom: 40px; }
+.progress-bar {
+  height: 2px;
+  background: var(--line);
+  width: 100%;
+  margin-bottom: 10px;
+}
+#progressFill {
+  height: 100%;
+  background: var(--accent-cyan);
+  width: 0%;
+  transition: width 0.4s ease;
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* 选项列表 */
+.options-list { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+.option-btn {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 20px;
+  text-align: left;
+  font-family: "Noto Serif SC", serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.option-btn:hover {
+  border-color: var(--accent-purple);
+  background: rgba(139, 92, 246, 0.1);
+  transform: translateX(10px);
+}
+
+/* 结果页特供 */
+.archetype-title { font-size: 4rem; background: -webkit-linear-gradient(45deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.archetype-desc { font-size: 1.2rem; color: var(--muted); line-height: 1.8; }
+canvas { width: 100%; border-radius: 8px; margin-top: 20px; border: 1px solid var(--line); }
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(30px, 50px); }
+}
